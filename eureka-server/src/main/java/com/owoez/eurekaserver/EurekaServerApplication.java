@@ -1,20 +1,19 @@
-package com.owoez.customer;
+package com.owoez.eurekaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * Author: tobilobaowolabi
- * Date: 20/02/2022
+ * Date: 21/02/2022
  * Project: distributed-services
  * IDE: IntelliJ IDEA
  **/
-
 @SpringBootApplication
-@EnableEurekaClient
-public class CustomerApplication {
+@EnableEurekaServer
+public class EurekaServerApplication {
   public static void main(String[] args) {
-    SpringApplication.run(CustomerApplication.class, args);
+	SpringApplication.run(EurekaServerApplication.class, args);
   }
 }
