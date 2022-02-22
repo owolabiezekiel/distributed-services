@@ -30,5 +30,11 @@ public class CustomerService {
 	if(fraudCheckResponse.isFraudster()){
 	  throw new IllegalStateException("Frausdster!!!");
 	}
+
+	NotificationRequest notificationRequest = new NotificationRequest(customer.getId(),
+		customer.getFirstName() + " " + customer.getLastName(),
+		"Hi there, this message is to let you know that your account has been created and verified successfully");
+
+	restTemplate.postForObject("http://NOTIFICATION/api/v1/notification", notificationRequest, String.class);
   }
 }
