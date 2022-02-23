@@ -1,6 +1,4 @@
-package com.owoez.fraud;
-
-import java.time.LocalDateTime;
+package com.owoez.clients.fraud;
 
 /**
  * Author: tobilobaowolabi
