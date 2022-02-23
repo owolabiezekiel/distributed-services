@@ -1,4 +1,4 @@
-package com.owoez.notification;
+package com.owoez.clients.notification;
 
 /**
  * Author: tobilobaowolabi

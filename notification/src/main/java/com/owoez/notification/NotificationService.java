@@ -1,5 +1,6 @@
 package com.owoez.notification;
 
+import com.owoez.clients.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

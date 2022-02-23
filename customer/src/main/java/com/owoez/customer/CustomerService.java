@@ -2,9 +2,10 @@ package com.owoez.customer;
 
 import com.owoez.clients.fraud.FraudCheckResponse;
 import com.owoez.clients.fraud.FraudClient;
+import com.owoez.clients.notification.NotificationClient;
+import com.owoez.clients.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Author: tobilobaowolabi
@@ -17,8 +18,8 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 public class CustomerService {
   private final CustomerRepository customerRepository;
-  private final RestTemplate restTemplate;
   private final FraudClient fraudClient;
+  private final NotificationClient notificationClient;
 
   public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
 	Customer customer = Customer.builder()
@@ -38,6 +39,6 @@ public class CustomerService {
 		customer.getFirstName() + " " + customer.getLastName(),
 		"Hi there, this message is to let you know that your account has been created and verified successfully");
 
-	restTemplate.postForObject("http://NOTIFICATION/api/v1/notification", notificationRequest, String.class);
+	notificationClient.sendNotification(notificationRequest);
   }
 }
