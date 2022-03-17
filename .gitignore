@@ -4,4 +4,5 @@
 /clients/target/
 /notification/target
 /eureka-server/target
+/amqp/target
 /api-gateway/target
