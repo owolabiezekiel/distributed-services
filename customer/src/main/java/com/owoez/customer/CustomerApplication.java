@@ -12,7 +12,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * IDE: IntelliJ IDEA
  **/
 
-@SpringBootApplication
+@SpringBootApplication(
+    scanBasePackages = {
+        "com.owoez.customer",
+        "com.owoez.amqp"
+    }
+)
 @EnableEurekaClient
 @EnableFeignClients(
     basePackages = "com.owoez.clients"

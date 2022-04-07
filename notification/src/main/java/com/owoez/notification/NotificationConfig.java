@@ -17,11 +17,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class NotificationConfig {
-  @Value("{rabbitmq.exchanges.internal}")
+  @Value("${rabbitmq.exchanges.internal}")
   private String internalExchange;
-  @Value("{rabbitmq.queue.notification}")
+  @Value("${rabbitmq.queue.notification}")
   private String notificationQueue;
-  @Value("{rabbitmq.routing-keys.internal-notification}")
+  @Value("${rabbitmq.routing-keys.internal-notification}")
   private String internalNotificationRoutingKey;
 
   @Bean
@@ -44,6 +44,7 @@ public class NotificationConfig {
   }
 
   public String getInternalExchange() {
+    System.out.println("Getting internal exchange value: " + internalExchange);
     return internalExchange;
   }
 
