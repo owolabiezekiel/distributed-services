@@ -69,6 +69,20 @@ services:
       - zipkin
       - eureka-server
 
+  customer:
+    image: owolabiezekiel/customer:latest
+    container_name: customer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - eureka-server
+      - api-gateway
+
 networks:
   postgres:
     driver: bridge
