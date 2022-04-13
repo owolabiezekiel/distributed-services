@@ -43,6 +43,8 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - spring
 
   eureka-server:
     image: owolabiezekiel/eureka-server:latest
@@ -78,10 +80,47 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
       - api-gateway
+      - postgres
+      - rabbitmq
+
+  fraud:
+    image: owolabiezekiel/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - api-gateway
+      - postgres
+      - rabbitmq
+
+  notification:
+    image: owolabiezekiel/notification:latest
+    container_name: notification
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - api-gateway
+      - postgres
+      - rabbitmq
 
 networks:
   postgres:
