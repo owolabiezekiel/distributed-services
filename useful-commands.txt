@@ -1,0 +1,10 @@
+##Kubernetes - Kubectl
+kubectl get pods -- Get the list of pods
+kubectl get services -- used for getting the list of services
+kubectl apply -f directory-of file  -- Apply file configurations to create a pod
+kubectl logs podname
+
+##Kubernetes - Minikube
+minikube ssh podname --used for ssh into the root of pod service
+minikube service --url service-name  --used for getting the IP address of service
+minikube tunnel --used for starting tunnels for load balancer to give them a static ip with defined port as described in configuration file
