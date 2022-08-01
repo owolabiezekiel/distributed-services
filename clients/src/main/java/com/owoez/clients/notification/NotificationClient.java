@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * IDE: IntelliJ IDEA
  **/
 
-@FeignClient("notification")
+@FeignClient(name = "notification", url = "${clients.notification.url}")
 public interface NotificationClient {
   @PostMapping("/api/v1/notification")
   void sendNotification(@RequestBody NotificationRequest notificationRequest);
